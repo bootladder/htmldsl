@@ -12,3 +12,6 @@
 2074 cd ../htmldsl/
 2075 l
 2077 rm frontend/src/.App.vue.swp
+2084 git add .
+2085 gds
+2087 git commit -m "style and layout"

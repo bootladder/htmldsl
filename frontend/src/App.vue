@@ -5,12 +5,19 @@ const dashes="-----------------------------------------------------"
 const initTagTable = {
     'd': '<div>',
     '/d': '</div>',
-    'dr': '<div class="text-lg" style="display:flex; flex-direction:row; background-color: red">',
+    'dr': '<div class="text-lg" style="display:flex; flex-direction:row; background-color: white">',
     '/dr': '</div>',
-    'dc': '<div style="display:flex; flex-direction:column; background-color: blue">',
+    'dc': '<div style="display:flex; flex-direction:column; background-color: gray">',
     '/dc': '</div>',
     't': 'hello',
     '/t': '',
+    'db': '<div class="bb bg-red-100 p-2 m-2">',
+    '/db': '</div>',
+}
+
+const initTextTable = {
+    '1': 'Hello',
+    '2': 'World',
 }
 
 
@@ -20,6 +27,7 @@ export default {
             blah: ref('hello world'),
             userinputtext: ref("dc\n-d\n-t\nd"),
             tagTableText: ref(JSON.stringify(initTagTable,null,2) ),
+            textTableText: ref(JSON.stringify(initTextTable,null,2) ),
             outputref: ref(null),
 		}
 	},
@@ -39,6 +47,9 @@ export default {
     computed: { 
         tagTable: function(){
             return JSON.parse(this.tagTableText)
+        },
+        textTable: function(){
+            return JSON.parse(this.textTableText)
         },
         siblingdict: function(){
             const NUMDIGITS = 8
@@ -99,7 +110,7 @@ export default {
         </div>
         <div class="text-xs bb m-1 p-1">
             <div>Text Table</div>
-            <div>{{ tagTable}}</div>
+            <div>{{ textTable}}</div>
         </div>
     </div>
     <div class="flexrow justify-evenly rounded-md bg-green-100 bred m-1 p-1">
