@@ -15,3 +15,9 @@
 2084 git add .
 2085 gds
 2087 git commit -m "style and layout"
+2089 git add .
+2090 git commit -m "better"
+2091 l
+2748 sudo docker-compose up
+2748 sudo docker-compose up
+2749 l
