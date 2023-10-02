@@ -1,0 +1,14 @@
+2732 l
+2733 l ../vueboilerplate/
+2739 git commit -m "init from old vueboilerplate branch"
+2740 l
+2741 vi deploy.sh
+2742 l
+2743 vi docker-compose.yml
+2744 sudo docker-compose up
+2745 sudo docker ps
+2746 sudo docker ps -a
+2747 sudo docker container rm dockercontainername
+2074 cd ../htmldsl/
+2075 l
+2077 rm frontend/src/.App.vue.swp

@@ -6,5 +6,12 @@
     .bb  {
         @apply border border-black
     }
+    .bred  {
+        @apply border border-red-200
+    }
+
+    .flexrow  {
+        @apply flex flex-row
+    }
 
 }

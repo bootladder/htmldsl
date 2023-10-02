@@ -1,12 +1,12 @@
 
 <template>
-  <div class="text-xs border border-gray-300 p-4 h-96 w-96">
-    <h3 class="font-bold mb-2">Hello</h3>
+  <div class="text-xs bb bg-gray-100  p-1 m-1 h-96 w-96">
+    <h3 class="font-bold mb-2">Source</h3>
     <textarea
         ref="thetextarea"
         style="font-family: monospace; font-weight:bold"
         :value="initialValue"   
-      class="h-full w-full resize-none border rounded-md p-2"
+      class="h-64 w-full resize-none border rounded-md p-2"
         @input="$emit('update:modelValue', $event.target.value)"
     ></textarea>
   </div>

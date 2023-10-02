@@ -83,11 +83,36 @@ export default {
 
 <template >
 <div class="flex flex-col">
-    <div v-html="outputhtmlstring"></div>
-    <div class="flex flex-row justify-between h-96 border-4 border-black">
+    <div class="bb m-1 p-1">Fastest HTML Slinger in the West</div>
+    <div class="flex flex-row h-full border m-1 bred">
         <InputWidget v-model="userinputtext" :initialValue="userinputtext" @enterpressed="enterpressed"/>
-        <div @click="loadoutputhtml" ref="outputref"></div>
-        <pre class="p-1 m-1 bg-gray-100 text-xs">{{outputarray}}</pre>
+        <div class="bb bg-gray-200 m-1 p-1 flexcol w-full">
+            <h3 class="font-bold mb-2">Rendered HTML</h3>
+            <div v-html="outputhtmlstring"></div>
+        </div>
+        
+    </div>
+    <div class="flexrow">
+        <div class="text-xs bb m-1 p-1">
+            <div>Tag Table</div>
+            <div>{{ tagTable}}</div>
+        </div>
+        <div class="text-xs bb m-1 p-1">
+            <div>Text Table</div>
+            <div>{{ tagTable}}</div>
+        </div>
+    </div>
+    <div class="flexrow justify-evenly rounded-md bg-green-100 bred m-1 p-1">
+        <div>Focus Source</div>
+        <div>Focus Tags</div>
+        <div>Focus Texts</div>
+        <div>Save</div>
+        <div>Copy</div>
+    </div>
+    <div @click="loadoutputhtml" ref="outputref">Click to Load</div>
+    <div>
+        <div>Raw HTML Output</div>
+        <pre class="p-1 m-1 bg-gray-100 text-xs">{{outputhtmlstring}}</pre>
     </div>
 </div>
 </template>
