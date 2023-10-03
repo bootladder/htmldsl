@@ -21,3 +21,17 @@
 2748 sudo docker-compose up
 2748 sudo docker-compose up
 2749 l
+2751 git add .
+2752 git commit -m "more"
+2754 l
+2755 vi deploy.sh
+2755 vi deploy.sh
+2755 vi deploy.sh
+2800 cd ..
+2801 l
+2802 vi deploy.sh
+2803 l
+2804 sudo docker-compose up
+2805 l
+2806 l frontend/dist/
+2092 ssh linode
