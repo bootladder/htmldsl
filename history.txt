@@ -35,3 +35,5 @@
 2805 l
 2806 l frontend/dist/
 2092 ssh linode
+2244 l
+2059 gd
