@@ -1,5 +1,6 @@
 <script>
 const cl = console.log
+import { html as beautifyHtml } from 'js-beautify';
 import {onMounted,ref, watch} from 'vue/dist/vue.esm-bundler.js';
 const dashes="-----------------------------------------------------"
 const initTagTable = {
@@ -82,6 +83,13 @@ export default {
             return this.outputarrayraw.join("")
         },
 
+        outputhtmlbeautified: function() {
+            return beautifyHtml(this.outputhtmlstring, {
+                indent_size: 2,
+                space_in_empty_paren: true
+            });
+        }
+
     },
 
 
@@ -98,15 +106,17 @@ export default {
     <div class="flex flex-row h-full border m-1 bred">
         <InputWidget v-model="userinputtext" :initialValue="userinputtext" @enterpressed="enterpressed"/>
         <div class="bb bg-gray-200 m-1 p-1 flexcol w-full">
-            <h3 class="font-bold mb-2">Rendered HTML</h3>
-            <div v-html="outputhtmlstring"></div>
+            <div>Raw HTML Output</div>
+            <pre class="p-1 m-1 bg-gray-100 text-xs">{{outputhtmlbeautified}}</pre>
         </div>
         
     </div>
     <div class="flexrow">
         <div class="text-xs bb m-1 p-1">
             <div>Tag Table</div>
-            <div>{{ tagTable}}</div>
+            <div>
+                <InputWidget v-model="tagTableText" :initialValue="tagTableText"/>
+            </div>
         </div>
         <div class="text-xs bb m-1 p-1">
             <div>Text Table</div>
@@ -122,8 +132,8 @@ export default {
     </div>
     <div @click="loadoutputhtml" ref="outputref">Click to Load</div>
     <div>
-        <div>Raw HTML Output</div>
-        <pre class="p-1 m-1 bg-gray-100 text-xs">{{outputhtmlstring}}</pre>
+            <h3 class="font-bold mb-2">Rendered HTML</h3>
+            <div class="bb" v-html="outputhtmlstring"></div>
     </div>
 </div>
 </template>
