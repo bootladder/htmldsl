@@ -37,3 +37,11 @@
 2092 ssh linode
 2244 l
 2059 gd
+2061 git add .
+2063 git commit -m "fix deploy paths"
+2280 sudo docker-compose up
+2003 ll
+2003 ll
+1995 du -sh dist/assets/* | sort -h
+1995 cat chasecreditcard-feb-statement.CSV | clip
+2171 gd

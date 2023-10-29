@@ -4,22 +4,23 @@ import { html as beautifyHtml } from 'js-beautify';
 import {onMounted,ref, watch} from 'vue/dist/vue.esm-bundler.js';
 const dashes="-----------------------------------------------------"
 const initTagTable = {
-    'd': '<div>',
+    'd': '<div class="div0">',
     '/d': '</div>',
-    'dr': '<div class="text-lg" style="display:flex; flex-direction:row; background-color: white">',
+    'dr': '<div class="row">',
     '/dr': '</div>',
-    'dc': '<div style="display:flex; flex-direction:column; background-color: gray">',
+    'dc': '<div class="col">',
     '/dc': '</div>',
     't': 'hello',
     '/t': '',
-    'db': '<div class="bb bg-red-100 p-2 m-2">',
+    'db': '<div class="borderbackground">',
     '/db': '</div>',
 }
 
-const initTextTable = {
-    '1': 'Hello',
-    '2': 'World',
-}
+const initStyleTagText = 
+`
+<style>
+</style>
+`
 
 
 export default {
@@ -28,7 +29,7 @@ export default {
             blah: ref('hello world'),
             userinputtext: ref("dc\n-d\n-t\nd"),
             tagTableText: ref(JSON.stringify(initTagTable,null,2) ),
-            textTableText: ref(JSON.stringify(initTextTable,null,2) ),
+            styleTagText: ref(JSON.stringify(initStyleTagText,null,2) ),
             outputref: ref(null),
 		}
 	},
@@ -49,8 +50,8 @@ export default {
         tagTable: function(){
             return JSON.parse(this.tagTableText)
         },
-        textTable: function(){
-            return JSON.parse(this.textTableText)
+        styleTag: function(){
+            return JSON.parse(this.styleTagText)
         },
         siblingdict: function(){
             const NUMDIGITS = 8
@@ -82,6 +83,9 @@ export default {
         outputhtmlstring: function(){
             return this.outputarrayraw.join("")
         },
+        outputhtmlstringwithstyletag: function(){
+            return '<div>' + this.styleTagText +  this.outputarrayraw.join("") + '</div>'
+        },
 
         outputhtmlbeautified: function() {
             return beautifyHtml(this.outputhtmlstring, {
@@ -111,6 +115,10 @@ export default {
         </div>
         
     </div>
+    <div class="bb m-2 p-2">
+            <h3 class="font-bold mb-2">Rendered HTML</h3>
+            <div class="bb" v-html="outputhtmlstringwithstyletag"></div>
+    </div>
     <div class="flexrow">
         <div class="text-xs bb m-1 p-1">
             <div>Tag Table</div>
@@ -119,8 +127,8 @@ export default {
             </div>
         </div>
         <div class="text-xs bb m-1 p-1">
-            <div>Text Table</div>
-            <div>{{ textTable}}</div>
+            <div>Style Tag</div>
+            <InputWidget v-model="styleTagText" :initialValue="styleTagText" @enterpressed="enterpressed"/>
         </div>
     </div>
     <div class="flexrow justify-evenly rounded-md bg-green-100 bred m-1 p-1">
@@ -131,10 +139,6 @@ export default {
         <div>Copy</div>
     </div>
     <div @click="loadoutputhtml" ref="outputref">Click to Load</div>
-    <div>
-            <h3 class="font-bold mb-2">Rendered HTML</h3>
-            <div class="bb" v-html="outputhtmlstring"></div>
-    </div>
 </div>
 </template>
 
