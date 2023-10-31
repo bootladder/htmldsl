@@ -5,7 +5,7 @@ import App from './App.vue'
 console.log("WELKSGSJS")
 
 import ColorDivView from './ColorDivView.vue'
-import UpDownSequence from './UpDownSequence.vue'
+//import UpDownSequence from './UpDownSequence.vue'
 import InputWidget from './InputWidget.vue'
 import IndentParserView from './IndentParserView.vue'
 import OtherApp from './OtherApp.vue'
@@ -20,7 +20,7 @@ const vueapp = createApp(App)
 //}
 console.log("WTF222")
 vueapp.component("ColorDivView",ColorDivView)
-vueapp.component("UpDownSequence",UpDownSequence)
+//vueapp.component("UpDownSequence",UpDownSequence)
 vueapp.component("InputWidget",InputWidget)
 vueapp.component("IndentParserView",IndentParserView)
 

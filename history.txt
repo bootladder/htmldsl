@@ -45,3 +45,31 @@
 1995 du -sh dist/assets/* | sort -h
 1995 cat chasecreditcard-feb-statement.CSV | clip
 2171 gd
+2173 git add .
+2174 gc "better"
+2176 git remote -v
+2177 git push
+1995 ./deploy.sh
+2173 l
+2174 cat deploy.sh
+2175 ./deploy.sh
+2176 l
+2177 sudo docker-compose up
+2177 sudo docker-compose up
+2178 ./deploy.sh
+1995 l
+1995 l
+1995 l
+2034 gd
+2036 l
+2037 sudo docker-compose build
+2060 l frontend/dist/
+2061 date
+2061 date
+2062 l frontend/dist/
+2063 l
+2038 sudo docker-compose up
+2064 vi frontend/runincontainer.sh
+2066 gd
+2038 sudo docker-compose up
+2068 gd

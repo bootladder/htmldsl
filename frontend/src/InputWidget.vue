@@ -8,7 +8,7 @@
     :value="initialValue"   
     class="h-64 w-full resize-none border rounded-md p-2"
     @input="$emit('update:modelValue', $event.target.value)"
-></textarea>
+    />
 
   </div>
 </template>

@@ -39,11 +39,13 @@ export default {
 
     methods: {
         loadoutputhtml:function(){
-            this.$refs.outputref.innerHTML = this.outputhtmlstring
+            //this.$refs.outputref.innerHTML = this.outputhtmlstring
+            this.$refs.outputref.$el.innerHTML = this.outputhtmlstring;
         },
         enterpressed: function(){
             const temp = this.userinputtext.replace(/" "/g,"-")
             this.userinputtext = this.userinputtext.replace(/ /g,"-")
+            //this.userinputtext.value = this.userinputtext.value.replace(/ /g, "-");
         },
      },
     computed: { 
@@ -58,20 +60,21 @@ export default {
             var acc = 0
             return this.userinputtext.split('\n').map( (rawline) => {
                 const line = rawline.replace(/-/g," ")
-                const indent = line.length - line.trimLeft().length
+                const indent = line.length - line.trimStart().length
                 acc =  acc+Math.pow(10,NUMDIGITS - indent - 1)
-                return [acc, indent, line.trimLeft()]
+                return [acc, indent, line.trimStart()]
             })
         },
         siblingdictplusclosingsorted: function(){
             const NUMDIGITS = 8
-            var acc = 0
             const newdict = JSON.parse(JSON.stringify(this.siblingdict))
             this.siblingdict.forEach( d => {
                 const newitem = [d[0] + Math.pow(10,NUMDIGITS-d[1] -2) * 9, d[1],"/"+d[2]]
                 newdict.push(newitem)
             })
-            return newdict.sort( (d1,d2) => parseInt(d1[0]) > parseInt(d2[0]))
+            //return newdict.sort( (d1,d2) => parseInt(d1[0]) > parseInt(d2[0]))
+            return newdict.sort((d1, d2) => d1[0] - d2[0]);
+
         },
         outputarray: function(){
             return this.siblingdictplusclosingsorted.map(s => dashes.slice(0,s[1]*4) +  this.tagTable[s[2]])
@@ -105,6 +108,7 @@ export default {
 
 
 <template >
+
 <div class="flex flex-col">
     <div class="bb m-1 p-1">Fastest HTML Slinger in the West</div>
     <div class="flex flex-row h-full border m-1 bred">
@@ -118,6 +122,7 @@ export default {
     <div class="bb m-2 p-2">
             <h3 class="font-bold mb-2">Rendered HTML</h3>
             <div class="bb" v-html="outputhtmlstringwithstyletag"></div>
+            <div class="bb" v-html="outputhtmlstring"></div>
     </div>
     <div class="flexrow">
         <div class="text-xs bb m-1 p-1">
